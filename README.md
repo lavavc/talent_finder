@@ -20,7 +20,7 @@ For the example `gh_data.csv` provided, it takes about 25 minutes to run. We'd l
 
 Perhaps you only know 5 really cracked devs. Use this option to find their most popular repos by number of stars, and then look at all their collaborators. Build out a network of great developers by looking at who the people you most respect spend their precious time and energy actually collaborating with.
 
-You'll need to specify how many repos of theirs to look at (it defaults to top 10 by star count) and how many collaborators per repo to consider (it default to the 30 most active) to avoid rate limits.
+You'll need to specify how many repos of theirs to look at (it defaults to top 10 by star count) and how many collaborators per repo to consider (it defaults to the 30 most active) to avoid rate limits.
 
 ### Option 3
 
@@ -35,7 +35,7 @@ git clone git@github.com:lavavc/talent_finder.git
 cd gh-scraper
 ```
 
-This project uses Python, and I recommend using a virtual environment for your own sanity. Start the ven and install necessary dependencies with a command like:
+This project uses Python, and I recommend using a virtual environment for your own sanity. Start the venv and install necessary dependencies with a command like:
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate && python3 -m pip install -e .
