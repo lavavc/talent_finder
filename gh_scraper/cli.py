@@ -275,6 +275,7 @@ def check(username: str, token: str | None, config_file: Path | None):
     table.add_row("Top Languages", ", ".join(profile.language_stats.top_languages))
     table.add_row("Has Solidity", str(profile.language_stats.has_solidity))
     table.add_row("Has Rust", str(profile.language_stats.has_rust))
+    table.add_row("Has Go", str(profile.language_stats.has_go))
     table.add_row("Has TypeScript", str(profile.language_stats.has_typescript))
     table.add_row("Has Mobile", str(profile.language_stats.has_mobile))
     table.add_row("Total Score", f"{profile.total_score:.2f}")

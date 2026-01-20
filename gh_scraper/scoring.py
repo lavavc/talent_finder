@@ -148,6 +148,8 @@ class ScoringEngine:
             bonuses += 5.0
         if profile.language_stats.has_rust:
             bonuses += 5.0
+        if profile.language_stats.has_go:
+            bonuses += 5.0
         if profile.language_stats.has_typescript:
             bonuses += 2.0
         if profile.language_stats.has_mobile:

@@ -46,7 +46,7 @@ class LanguageWeights(BaseModel):
     typescript: float = 1.5
     swift: float = 1.5
     kotlin: float = 1.5
-    go: float = 1.3
+    go: float = 2.0
     python: float = 1.0
     javascript: float = 1.0
     java: float = 1.0

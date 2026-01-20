@@ -113,6 +113,7 @@ class LanguageStats(BaseModel):
     top_languages: list[str] = Field(default_factory=list)
     has_solidity: bool = False
     has_rust: bool = False
+    has_go: bool = False
     has_typescript: bool = False
     has_mobile: bool = False  # kotlin/swift/dart/react-native
 
@@ -141,6 +142,7 @@ class LanguageStats(BaseModel):
             top_languages=top_languages,
             has_solidity="solidity" in languages,
             has_rust="rust" in languages,
+            has_go="go" in languages,
             has_typescript="typescript" in languages,
             has_mobile=has_mobile,
         )
@@ -215,6 +217,7 @@ class ScrapedUser(BaseModel):
     top_languages: str = ""  # comma-separated
     has_solidity: bool = False
     has_rust: bool = False
+    has_go: bool = False
     has_typescript: bool = False
     has_mobile: bool = False
     source: str = "seed"  # seed, collaborator, follower
@@ -242,6 +245,7 @@ class ScrapedUser(BaseModel):
             top_languages=", ".join(profile.language_stats.top_languages),
             has_solidity=profile.language_stats.has_solidity,
             has_rust=profile.language_stats.has_rust,
+            has_go=profile.language_stats.has_go,
             has_typescript=profile.language_stats.has_typescript,
             has_mobile=profile.language_stats.has_mobile,
             source=source,
