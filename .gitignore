@@ -23,3 +23,5 @@ build/
 .vscode/
 *.swp
 .claude/
+
+.DS_Store
