@@ -1,0 +1,25 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Output files
+*.csv
+*.xlsx
+!test_users.csv
+
+# Checkpoints
+.*_checkpoint.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.claude/
