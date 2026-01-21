@@ -8,6 +8,8 @@ Our talent finder is a customisable CLI tool. Follow the instructions below to g
 
 You'll get the most relevant results if your start with your own list of GitHub accounts you are already interested in.
 
+Find [ranked borderless devs here](borderless_ranked.md), and ranked devs from another popular GitHub repo [here](gayan_ranked.md).
+
 ### Option 1
 
 Enrich the list of names you already have with activity, contribution, and language data. We find this useful to get a ranked view of our network, or to find people using the sort of language you would use when building things we at LAVA are interested in (the list is ranked by a global activity score, but we output a .csv file so that we can filter by various other columns we might be interested in researching).
@@ -55,7 +57,7 @@ cp .env.example .env
 3. Run the scraper:
    
 ```bash
-gh-scraper scrape --input lava_data.csv
+gh-scraper scrape --input borderless_data.csv
 ```
 
 ## CLI Commands
@@ -72,6 +74,7 @@ gh-scraper scrape --input users.csv --output enriched.csv
 | `-o, --output` | `processed_profiles.csv` | Output file (.csv or .xlsx) |
 | `--resume` | off | Resume from checkpoint if interrupted |
 | `--username-column` | `gh_username` | Column name for usernames |
+| `--update-ranking` | off | Updates the `.md` file you pass in as argument | 
 
 ### Option 2: Discover collaborators
 

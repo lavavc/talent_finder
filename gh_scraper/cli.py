@@ -83,6 +83,17 @@ def main():
     envvar="GITHUB_TOKEN",
     help="GitHub personal access token (or set GITHUB_TOKEN env var)",
 )
+@click.option(
+    "--update-ranking",
+    "ranking_file",
+    type=click.Path(path_type=Path),
+    help="Update a markdown ranking file with results (e.g., borderless_ranked.md)",
+)
+@click.option(
+    "--ranking-title",
+    default="Borderless Talent Ranking",
+    help="Title for the ranking markdown file",
+)
 def scrape(
     input_file: Path,
     output_file: Path,
@@ -90,6 +101,8 @@ def scrape(
     resume: bool,
     username_column: str,
     token: str | None,
+    ranking_file: Path | None,
+    ranking_title: str,
 ):
     """Scrape GitHub profiles from a CSV and output enriched data."""
     # Load environment variables
@@ -179,6 +192,11 @@ def scrape(
         console.print()
         show_top_results(output_file, n=5)
 
+    # Update ranking markdown if requested
+    if ranking_file:
+        console.print()
+        generate_ranking_markdown(output_file, ranking_file, ranking_title)
+
 
 def show_top_results(output_file: Path, n: int = 5):
     """Display top N results in a table."""
@@ -211,6 +229,48 @@ def show_top_results(output_file: Path, n: int = 5):
         )
 
     console.print(table)
+
+
+def generate_ranking_markdown(csv_path: Path, output_path: Path, title: str = "Talent Ranking"):
+    """Generate a markdown ranking file from a processed CSV.
+
+    Args:
+        csv_path: Path to the input CSV file.
+        output_path: Path to the output markdown file.
+        title: Title for the markdown document.
+    """
+    import pandas as pd
+
+    df = pd.read_csv(csv_path)
+
+    # Filter out rows with 0 total_score and sort by total_score
+    df = df[df["total_score"] > 0].sort_values("total_score", ascending=False)
+
+    lines = [
+        f"# {title}",
+        "",
+        "GitHub developer rankings based on activity, contributions, and technical skills.",
+        "",
+        "| Rank | GitHub Username | Total Score | Followers | Contributions | Stars | Top Languages |",
+        "|------|-----------------|-------------|-----------|---------------|-------|---------------|",
+    ]
+
+    for i, (_, row) in enumerate(df.iterrows(), 1):
+        username = row["username"]
+        gh_link = f"[@{username}](https://github.com/{username})"
+        score = f"{row['total_score']:.2f}"
+        followers = int(row["followers"])
+        contributions = int(row["total_contributions"])
+        stars = int(row["total_stars"])
+        langs = str(row["top_languages"]) if pd.notna(row["top_languages"]) else ""
+        langs = langs.strip('"').strip("'")
+
+        lines.append(
+            f"| {i} | {gh_link} | {score} | {followers:,} | {contributions:,} | {stars:,} | {langs} |"
+        )
+
+    output_path.write_text("\n".join(lines) + "\n")
+    console.print(f"[green]Ranking updated:[/green] {output_path}")
 
 
 @main.command()

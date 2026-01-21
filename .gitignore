@@ -14,7 +14,7 @@ build/
 *.csv
 *.xlsx
 !test_users.csv
-!lava_data.csv
+!borderless_data.csv
 !gh_data.csv
 
 # Checkpoints
