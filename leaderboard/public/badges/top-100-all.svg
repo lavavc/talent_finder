@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="28" viewBox="0 0 140 28">
+  <defs>
+    <linearGradient id="bg-all" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="140" height="28" rx="4" fill="url(#bg-all)"/>
+  <text x="10" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#fff">Top 100 Developer</text>
+</svg>
