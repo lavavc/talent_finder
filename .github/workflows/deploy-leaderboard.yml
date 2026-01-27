@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - 'leaderboard/**'
-      - 'borderless_processed.csv'
-      - 'gayan_processed.csv'
       - '.github/workflows/deploy-leaderboard.yml'
   workflow_dispatch:
 
@@ -39,9 +37,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Process CSV data
-        run: npm run process-data
 
       - name: Build
         run: npm run build
